@@ -41,6 +41,30 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+
+		<!-- Pull in as a traditional dependency -->
+		<dependency>
+			<groupId>com.konghq</groupId>
+			<artifactId>unirest-java</artifactId>
+			<version>3.13.6</version>
+		</dependency>
+
+		<!-- OR as a snazzy new standalone jar with shaded dependencies -->
+		<dependency>
+			<groupId>com.konghq</groupId>
+			<artifactId>unirest-java</artifactId>
+			<version>3.13.6</version>
+			<classifier>standalone</classifier>
+		</dependency>
+
 	</dependencies>
 
 	<build>

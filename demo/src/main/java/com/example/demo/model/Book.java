@@ -12,6 +12,10 @@ public class Book {
     private String bookName;
     private String bookAuthor;
 
+
+    public long getBookId(){
+        return bookId;
+    }
     public String getBookName() {
         return bookName;
     }
