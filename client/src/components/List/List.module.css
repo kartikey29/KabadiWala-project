@@ -1,0 +1,35 @@
+.listContainer {
+  display: inline-block;
+  width: 70%;
+  -webkit-box-shadow: 0px 0px 11px -2px #000000;
+  box-shadow: 0px 0px 11px -2px #000000;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.listContainer h1 {
+  display: inline;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.listContainer ul {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  list-style-type: none;
+  font-weight: bold;
+}
+.listContainer li {
+  margin: 0;
+  padding: 10px;
+  margin-bottom: 5px;
+  text-align: left;
+  border-bottom: 2px solid black;
+}
+
+.percent {
+  color: red;
+  position: absolute;
+  right: 20px;
+}
