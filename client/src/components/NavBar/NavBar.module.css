@@ -1,5 +1,6 @@
 .login {
   background-color: coral;
+  width: 100px;
   border-radius: 10px;
   font-weight: 500;
   margin-right: 20px;
@@ -15,4 +16,25 @@
   font-size: 1.5rem;
   padding-bottom: 10px;
   font-weight: 500;
+}
+.walletbtn {
+  background-color: blue;
+  border-radius: 10px;
+  width: 100px;
+  margin-right: 20px;
+}
+
+.walleticon {
+  margin-right: 5px;
+}
+
+.balance {
+  border: 2px solid black;
+  color: white;
+  text-align: center;
+  padding: 5px;
+  margin-right: 20px;
+  border-radius: 10px;
+  background-color: black;
+  width: 100px;
 }
