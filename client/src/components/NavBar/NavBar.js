@@ -13,7 +13,7 @@ const NavigationBar = () => {
     >
       <Container>
         <Navbar.Brand className={classes.brand} href="#home">
-          InvestOlearn
+          LearnOinvest
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
