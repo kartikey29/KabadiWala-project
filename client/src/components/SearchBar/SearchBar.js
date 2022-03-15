@@ -15,10 +15,12 @@ const SearchBar = () => {
     const data = {
       query,
     };
+
     api
       .post("/search", data)
       .then((res) => {
-        console.log(res);
+        const response = JSON.parse(res);
+        console.log(response);
       })
       .catch((err) => {
         console.log(err);
