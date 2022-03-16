@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import classes from "./search.module.css";
 import api from "../../config/api";
+import { useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
-
+  const navigate = useNavigate();
   const inputHandler = (event) => {
     setQuery(event.target.value);
   };
@@ -15,7 +16,6 @@ const SearchBar = () => {
     const data = {
       query,
     };
-
     api
       .post("/search", data)
       .then((res) => {
@@ -25,6 +25,7 @@ const SearchBar = () => {
       .catch((err) => {
         console.log(err);
       });
+    navigate("/result");
   };
 
   return (
