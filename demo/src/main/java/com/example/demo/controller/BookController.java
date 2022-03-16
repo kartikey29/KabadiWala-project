@@ -1,7 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Book;
-import com.example.demo.repo.BookRepository;
+import com.example.demo.model.stockValues;
+import com.example.demo.service.serviceClass;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,48 +11,86 @@ import java.util.Optional;
 
 // for connecting with ui
 @CrossOrigin(origins = "http://localhost:3000")
-// requestmapping is for connecting to react
-@RequestMapping("/api/vi/")
 
+
+@RequestMapping("/")
+
+// maps given request to respected function
 @RestController
 public class BookController {
 
     @Autowired
-    BookRepository bookRepository;
+    private final serviceClass service;
 
-    // saving data on server
-    // post means getting
-    // by default getting a json file
-    // localhost:8080/bookSave will now receive file
+    public BookController(serviceClass service){
+        this.service = service;
+    }
+
+
+    // ****** API calls taking data from external API ***************
+
+    @PostMapping("/search")
+    public String searchAPIReturn(@RequestBody stockValues stockvalues){
+        return service.searchAPIReturn(stockvalues);
+    }
+
+    @GetMapping("/toploss")
+    public String topLossers(){
+        return service.topLossers();
+    }
+
+    @GetMapping("/topgain")
+    public String topGainers(){
+        return service.topGainers();
+    }
+
+    @GetMapping("/nifty50")
+    public String niftyFifty(){
+        return service.niftyFifty();
+    }
+
+    @GetMapping("/mktstat")
+    public String currentMarketStatus(){
+        return service.currentMarketStatus();
+    }
+
+
+
+    // ********** API calls taking data from database *********
+
     @PostMapping("/bookSave")
-    public String insertBook(@RequestBody Book book){
-        bookRepository.save(book);
-        return "Record saved !";
+    public String addBook(@RequestBody Book book){
+        return service.insertBook(book);
     }
 
-    // for saving multiple objects at the same time and saving them
     @PostMapping("/multipleBookSave")
-    public String insertBook(@RequestBody List<Book> book){
-        bookRepository.saveAll(book);
-        return "All records saved !";
+    public String insertBook(List<Book> book){
+        return service.insertBook(book);
     }
 
-    // ** for taking data from database **
     @GetMapping("/getAllBook")
     public List<Book> getBook(){
-        return (List<Book>) bookRepository.findAll();
+        return (List<Book>) service.getBook();
     }
 
-    // for getting data from database using bookName field
     @GetMapping("/getByBookName/{name}")
     public List<Book> getBookByName(@PathVariable("name") String bookName){
-        return (List<Book>) bookRepository.findBybookName(bookName);
+        return (List<Book>) service.getBookByName(bookName);
     }
 
-    // for getting data from database using bookId field
     @GetMapping("/getByBookId/{bookId}")
     public Optional<Book> getBookById(@PathVariable("bookId") Long id){
-        return bookRepository.findById(id);
+        return service.getBookById(id);
+    }
+
+    @PutMapping("/updateBook")
+    public String updateProduct(@RequestBody Book book){
+        return service.updateProduct(book);
+    }
+
+    @DeleteMapping("/deleteBook/{bookId}")
+    public String deleteBook(@PathVariable long bookId){
+        return service.deleteBook(bookId);
     }
 
 }
