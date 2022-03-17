@@ -62,7 +62,7 @@ public class serviceClass {
     public String niftyBank(){
         HttpResponse<String> response = Unirest.get("https://nse-data1.p.rapidapi.com/nifty_bank_indices_data")
                 .header("x-rapidapi-host", "nse-data1.p.rapidapi.com")
-                .header("x-rapidapi-key", "5cf14e1a73msh364465b47433a32p16e07ejsne21e16ff42a2")
+                .header("x-rapidapi-key", "e1a8ee11demsha989d480540a986p1957f1jsn3e1409730d73")
                 .asString();
 
         return response.getBody();

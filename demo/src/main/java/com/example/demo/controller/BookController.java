@@ -56,6 +56,11 @@ public class BookController {
         return service.niftyFifty();
     }
 
+    @GetMapping("/niftybnk")
+    public String niftyBank(){
+        return service.niftyBank();
+    }
+
     @GetMapping("/mktstat")
     public String currentMarketStatus(){
         return service.currentMarketStatus();
