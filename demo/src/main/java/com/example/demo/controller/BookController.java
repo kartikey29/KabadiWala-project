@@ -29,6 +29,13 @@ public class BookController {
 
     // ****** API calls taking data from external API ***************
 
+    // return price object for a given symbol of stock
+    @PostMapping("/returnPrice")
+    public String returnPriceForStock(@RequestBody stockValues stockvalues){
+        return service.returnPriceForStock(stockvalues);
+    }
+
+    // return search results for a given keyword
     @PostMapping("/search")
     public String searchAPIReturn(@RequestBody stockValues stockvalues){
         return service.searchAPIReturn(stockvalues);
@@ -47,6 +54,11 @@ public class BookController {
     @GetMapping("/nifty50")
     public String niftyFifty(){
         return service.niftyFifty();
+    }
+
+    @GetMapping("/niftybnk")
+    public String niftyBank(){
+        return service.niftyBank();
     }
 
     @GetMapping("/mktstat")

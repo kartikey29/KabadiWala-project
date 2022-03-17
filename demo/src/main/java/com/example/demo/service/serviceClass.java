@@ -131,8 +131,16 @@ public class serviceClass {
         this.restTemplate = restTemplate;
     }
 
-    public String consumeAPI(){
-        return restTemplate.getForObject("https://catfact.ninja/fact", String.class);
+
+    public String searchAPIAlpha(stockValues stockvalues){
+        String url = "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=" + stockvalues.getQuery() + "&apikey=JJOY4DWMGMI1F08X";
+        return restTemplate.getForObject(url, String.class);
+    }
+
+    public String returnPriceForStock(stockValues stockvalues){ // symbol of the stock is recieved
+        String stock = stockvalues.getQuery() + ".BSE";
+        String url = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=" + stock +  "&apikey=JJOY4DWMGMI1F08X";
+        return restTemplate.getForObject(url, String.class);
     }
 
 }
