@@ -62,7 +62,7 @@ public class serviceClass {
     public String niftyBank(){
         HttpResponse<String> response = Unirest.get("https://nse-data1.p.rapidapi.com/nifty_bank_indices_data")
                 .header("x-rapidapi-host", "nse-data1.p.rapidapi.com")
-                .header("x-rapidapi-key", "e1a8ee11demsha989d480540a986p1957f1jsn3e1409730d73")
+                .header("x-rapidapi-key", "5cf14e1a73msh364465b47433a32p16e07ejsne21e16ff42a2")
                 .asString();
 
         return response.getBody();
@@ -131,8 +131,16 @@ public class serviceClass {
         this.restTemplate = restTemplate;
     }
 
-    public String consumeAPI(){
-        return restTemplate.getForObject("https://catfact.ninja/fact", String.class);
+
+    public String searchAPIAlpha(stockValues stockvalues){
+        String url = "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=" + stockvalues.getQuery() + "&apikey=JJOY4DWMGMI1F08X";
+        return restTemplate.getForObject(url, String.class);
+    }
+
+    public String returnPriceForStock(stockValues stockvalues){ // symbol of the stock is recieved
+        String stock = stockvalues.getQuery() + ".BSE";
+        String url = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=" + stock +  "&apikey=JJOY4DWMGMI1F08X";
+        return restTemplate.getForObject(url, String.class);
     }
 
 }
