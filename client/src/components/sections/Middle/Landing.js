@@ -10,14 +10,14 @@ const Landing = () => {
       <Container>
         <Row>
           <Col>
-            <List></List>
+            <List type={"topgain"}></List>
           </Col>
           <Col>
-            <List></List>
+            <List type={"toploss"}></List>
           </Col>
           <Col>
-            <Box></Box>
-            <Box></Box>
+            <Box type={"nifty50"}></Box>
+            <Box type={"niftybnk"}></Box>
           </Col>
         </Row>
       </Container>

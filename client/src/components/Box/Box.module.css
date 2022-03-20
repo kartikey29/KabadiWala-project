@@ -8,11 +8,6 @@
   position: relative;
   margin: 10px auto;
 }
-.box p {
-  margin-bottom: 0;
-  position: absolute;
-  right: 20px;
-  top: 47%;
-  transform: translate(0, -50%);
-  font-size: 2rem;
+.box span {
+  font-size: 1.2rem;
 }

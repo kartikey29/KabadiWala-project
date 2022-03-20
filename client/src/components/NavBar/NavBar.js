@@ -12,7 +12,7 @@ const NavigationBar = () => {
       variant="dark"
     >
       <Container>
-        <Navbar.Brand className={classes.brand} href="#home">
+        <Navbar.Brand className={classes.brand} href="/">
           LearnOinvest
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />

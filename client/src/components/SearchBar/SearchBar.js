@@ -6,26 +6,30 @@ import { useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
-  const navigate = useNavigate();
+  const [resDat, setResDat] = useState("");
   const inputHandler = (event) => {
     setQuery(event.target.value);
   };
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
     const data = {
       query,
     };
     api
-      .post("/search", data)
+      .post(
+        "https://f97aec65-2ae6-41d9-9ddb-9d4a0f5082f3.mock.pstmn.io/getData",
+        data
+      )
       .then((res) => {
-        const response = JSON.parse(res);
-        console.log(response);
+        console.log(res);
+        const response = res;
+        setResDat(response);
+        // navigate("/result", { state: { data: resDat } });
       })
       .catch((err) => {
         console.log(err);
       });
-    navigate("/result");
   };
 
   return (

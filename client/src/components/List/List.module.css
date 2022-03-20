@@ -22,14 +22,20 @@
 }
 .listContainer li {
   margin: 0;
+
   padding: 10px;
   margin-bottom: 5px;
   text-align: left;
   border-bottom: 2px solid black;
+  cursor: pointer;
+}
+.listContainer li:hover {
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 20px -3px #000000;
+  box-shadow: 0px 0px 20px -3px #000000;
 }
 
 .percent {
-  color: red;
   position: absolute;
   right: 20px;
 }
