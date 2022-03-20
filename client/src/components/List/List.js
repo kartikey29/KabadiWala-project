@@ -8,8 +8,8 @@ const List = (props) => {
 
   useEffect(() => {
     api
-      // .get(`/${props.type}`)
-      .get("https://f97aec65-2ae6-41d9-9ddb-9d4a0f5082f3.mock.pstmn.io/search")
+      .get(`/${props.type}`)
+      // .get("https://f97aec65-2ae6-41d9-9ddb-9d4a0f5082f3.mock.pstmn.io/search")
       .then((res) => {
         const response = res;
         console.log(response);
