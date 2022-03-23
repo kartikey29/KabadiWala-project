@@ -9,8 +9,8 @@ const Box = (props) => {
 
   useEffect(() => {
     api
-      // .get(`/${props.type}`)
-      .get("https://c883b05e-97a0-4b43-92f6-a3c0276c5f4e.mock.pstmn.io/nifty50")
+      .get(`/${props.type}`)
+      // .get("https://c883b05e-97a0-4b43-92f6-a3c0276c5f4e.mock.pstmn.io/nifty50")
       .then((res) => {
         const response = res;
         console.log(response);

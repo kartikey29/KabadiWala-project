@@ -20,10 +20,7 @@ const SearchBar = () => {
       query,
     };
     try {
-      const response = await api.post(
-        "https://c883b05e-97a0-4b43-92f6-a3c0276c5f4e.mock.pstmn.io/getData",
-        data
-      );
+      const response = await api.post("/search", data);
       dispatch({
         type: "LIST_DATA_SENT",
         payload: { data: response.data.body.symbols },

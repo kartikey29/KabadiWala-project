@@ -11,9 +11,7 @@ const ModalCustom = (props) => {
   const [allPrice, setAllPrice] = useState();
   useEffect(() => {
     api
-      .get(
-        "https://c883b05e-97a0-4b43-92f6-a3c0276c5f4e.mock.pstmn.io/stockdata"
-      )
+      .get("/stockprice")
       .then((res) => {
         console.log(res);
         const obj = res.data["Time Series (Daily)"];
