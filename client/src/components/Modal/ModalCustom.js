@@ -1,6 +1,5 @@
 import { Button, Modal } from "react-bootstrap";
 import { useEffect, useState } from "react";
-import api from "../../config/api";
 import classes from "./ModalCustom.module.css";
 import Loading from "../UI/Loading";
 import priceData from "../helperFunctions/getPriceData";
@@ -14,7 +13,7 @@ const ModalCustom = (props) => {
   useEffect(() => {
     const func = async () => {
       const data = {
-        query: props.symbol,
+        query: props.title,
       };
       const res = await priceData(data);
       setStockData(res[1]);
