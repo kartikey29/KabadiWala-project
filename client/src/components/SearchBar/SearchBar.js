@@ -29,22 +29,7 @@ const SearchBar = () => {
     } catch (e) {
       console.log(e);
     }
-
-    // api
-    //   .post(
-    //     "https://c883b05e-97a0-4b43-92f6-a3c0276c5f4e.mock.pstmn.io/getData",
-    //     data
-    //   )
-    //   .then((res) => {
-    //    await dispatch({
-    //       type: "LIST_DATA_SENT",
-    //       payload: { data: res.data.body.symbols },
-    //     });
-    //   })
-    //   .then()
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    // "https://c883b05e-97a0-4b43-92f6-a3c0276c5f4e.mock.pstmn.io/getData"
   };
 
   return (

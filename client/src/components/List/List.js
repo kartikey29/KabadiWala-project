@@ -13,21 +13,17 @@ const List = (props) => {
   const handleShow = () => setShow(true);
 
   useEffect(() => {
-    api
-      .get(`/${props.type}`)
-      // .get("https://c883b05e-97a0-4b43-92f6-a3c0276c5f4e.mock.pstmn.io/search")
-      .then((res) => {
-        const response = res;
-        console.log(response);
+    // "https://c883b05e-97a0-4b43-92f6-a3c0276c5f4e.mock.pstmn.io/search";
+    const data = async () => {
+      try {
+        const response = await api.get(`/${props.type}`);
         setData(response.data.body.allSec.data);
         setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    return () => {
-      setLoading(true);
+      } catch (e) {
+        console.log(e);
+      }
     };
+    data();
   }, []);
 
   const makeList = (element, index) => {

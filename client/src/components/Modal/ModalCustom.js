@@ -3,29 +3,25 @@ import { useEffect, useState } from "react";
 import api from "../../config/api";
 import classes from "./ModalCustom.module.css";
 import Loading from "../UI/Loading";
+import priceData from "../helperFunctions/getPriceData";
 
 const ModalCustom = (props) => {
   const [loading, setLoading] = useState(true);
   const [stockData, setStockData] = useState();
   const [quantity, setQuantity] = useState();
   const [allPrice, setAllPrice] = useState();
+
   useEffect(() => {
-    api
-      .get("/stockprice")
-      .then((res) => {
-        console.log(res);
-        const obj = res.data["Time Series (Daily)"];
-        const priceData = obj[Object.keys(obj)[0]];
-        setAllPrice(priceData);
-        setStockData(Math.round(priceData["4. close"]));
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    return () => {
-      setLoading(true);
+    const func = async () => {
+      const data = {
+        query: props.symbol,
+      };
+      const res = await priceData(data);
+      setStockData(res[1]);
+      setAllPrice(res[0]);
+      setLoading(false);
     };
+    func();
   }, []);
 
   const handleSubmit = (event) => {

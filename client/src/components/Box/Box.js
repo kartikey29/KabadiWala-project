@@ -8,21 +8,17 @@ const Box = (props) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    api
-      .get(`/${props.type}`)
-      // .get("https://c883b05e-97a0-4b43-92f6-a3c0276c5f4e.mock.pstmn.io/nifty50")
-      .then((res) => {
-        const response = res;
-        console.log(response);
+    // "https://c883b05e-97a0-4b43-92f6-a3c0276c5f4e.mock.pstmn.io/nifty50"
+    const data = async () => {
+      try {
+        const response = await api.get(`/${props.type}`);
         setData(response.data.body);
         setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    return () => {
-      setLoading(true);
+      } catch (e) {
+        console.log(e);
+      }
     };
+    data();
   }, []);
 
   return (
