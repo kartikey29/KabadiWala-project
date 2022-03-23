@@ -3,10 +3,13 @@ import { Button } from "react-bootstrap";
 import classes from "./search.module.css";
 import api from "../../config/api";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
-  const [resDat, setResDat] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const inputHandler = (event) => {
     setQuery(event.target.value);
   };
@@ -16,20 +19,35 @@ const SearchBar = () => {
     const data = {
       query,
     };
-    api
-      .post(
-        "https://f97aec65-2ae6-41d9-9ddb-9d4a0f5082f3.mock.pstmn.io/getData",
+    try {
+      const response = await api.post(
+        "https://c883b05e-97a0-4b43-92f6-a3c0276c5f4e.mock.pstmn.io/getData",
         data
-      )
-      .then((res) => {
-        console.log(res);
-        const response = res;
-        setResDat(response);
-        // navigate("/result", { state: { data: resDat } });
-      })
-      .catch((err) => {
-        console.log(err);
+      );
+      dispatch({
+        type: "LIST_DATA_SENT",
+        payload: { data: response.data.body.symbols },
       });
+      navigate("/result");
+    } catch (e) {
+      console.log(e);
+    }
+
+    // api
+    //   .post(
+    //     "https://c883b05e-97a0-4b43-92f6-a3c0276c5f4e.mock.pstmn.io/getData",
+    //     data
+    //   )
+    //   .then((res) => {
+    //    await dispatch({
+    //       type: "LIST_DATA_SENT",
+    //       payload: { data: res.data.body.symbols },
+    //     });
+    //   })
+    //   .then()
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   };
 
   return (

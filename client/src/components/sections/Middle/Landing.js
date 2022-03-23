@@ -9,13 +9,13 @@ const Landing = () => {
     <div className={classes.middle}>
       <Container>
         <Row>
-          <Col>
+          <Col lg>
             <List type={"topgain"}></List>
           </Col>
-          <Col>
+          <Col lg>
             <List type={"toploss"}></List>
           </Col>
-          <Col>
+          <Col lg>
             <Box type={"nifty50"}></Box>
             <Box type={"niftybnk"}></Box>
           </Col>

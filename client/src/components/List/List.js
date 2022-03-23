@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from "react";
 import classes from "./List.module.css";
 import api from "../../config/api";
+import ModalCustom from "../Modal/ModalCustom";
+import Loading from "../UI/Loading";
 
 const List = (props) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [show, setShow] = useState(false);
+  const [symbol, setSymbol] = useState("");
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   useEffect(() => {
     api
-      .get(`/${props.type}`)
-      // .get("https://f97aec65-2ae6-41d9-9ddb-9d4a0f5082f3.mock.pstmn.io/search")
+      // .get(`/${props.type}`)
+      .get("https://c883b05e-97a0-4b43-92f6-a3c0276c5f4e.mock.pstmn.io/search")
       .then((res) => {
         const response = res;
         console.log(response);
@@ -41,18 +47,29 @@ const List = (props) => {
   };
 
   const handleClick = (event) => {
-    console.log(event.target.id);
+    setSymbol(event.target.id);
+    handleShow();
   };
 
   return (
-    <div className={classes.listContainer}>
-      <h1>{props.type === "topgain" ? "Top Gainner" : "Top Lossers"}</h1>
-      {loading || !data ? (
-        <div> loading...</div>
-      ) : (
-        <ul>{data.slice(0, 7).map(makeList)}</ul>
+    <>
+      {show && (
+        <ModalCustom
+          show={show}
+          title={symbol}
+          handleClose={handleClose}
+          handleShow={handleShow}
+        ></ModalCustom>
       )}
-    </div>
+      <div className={classes.listContainer}>
+        <h1>{props.type === "topgain" ? "Top Gainer" : "Top Lossers"}</h1>
+        {loading || !data ? (
+          <Loading />
+        ) : (
+          <ul>{data.slice(0, 7).map(makeList)}</ul>
+        )}
+      </div>
+    </>
   );
 };
 
