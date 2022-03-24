@@ -15,12 +15,12 @@
   margin-left: 10px;
   border-radius: 20px;
   margin-bottom: 5px;
-  background-color: #ff7f50;
+  background-color: coral;
   color: white;
   border: none;
 }
 .submit:hover {
-  background-color: #ff7f50;
+  background-color: coral;
   border: none;
   box-shadow: 2px 2px 20px 5px rgba(232, 118, 77, 0.75);
   -webkit-box-shadow: 2px 2px 20px 5px rgba(232, 118, 77, 0.75);

@@ -6,3 +6,21 @@ export const searchData = () => {
     },
   };
 };
+
+export const portfolioData = () => {
+  return {
+    type: "GOT_PORTFOLIO_DATA",
+    payload: {
+      data: {},
+    },
+  };
+};
+
+export const balance = () => {
+  return {
+    type: "GOT_BALANCE_DATA",
+    payload: {
+      data: {},
+    },
+  };
+};
