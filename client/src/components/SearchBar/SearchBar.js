@@ -37,7 +37,7 @@ const SearchBar = () => {
       <form onSubmit={submitHandler}>
         <input
           className={classes.input}
-          placeholder="Search"
+          placeholder="Search Stock"
           type="text"
           label="search"
           value={query}

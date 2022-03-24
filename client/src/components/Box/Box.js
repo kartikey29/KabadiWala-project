@@ -19,6 +19,9 @@ const Box = (props) => {
       }
     };
     data();
+    return () => {
+      setLoading(true);
+    };
   }, []);
 
   return (
