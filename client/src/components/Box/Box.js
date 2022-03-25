@@ -11,7 +11,9 @@ const Box = (props) => {
     // "https://c883b05e-97a0-4b43-92f6-a3c0276c5f4e.mock.pstmn.io/nifty50"
     const data = async () => {
       try {
-        const response = await api.get(`/${props.type}`);
+        const response = await api.get(
+          `https://f97aec65-2ae6-41d9-9ddb-9d4a0f5082f3.mock.pstmn.io/${props.type}`
+        );
         setData(response.data.body);
         setLoading(false);
       } catch (e) {

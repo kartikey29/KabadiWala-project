@@ -34,7 +34,7 @@ const ModalCustom = (props) => {
       buy_price: stockData,
       quantity: parseInt(quantity),
     };
-
+    console.log(data);
     const response = await api.post("/buyupdate", data);
     console.log(response);
 
