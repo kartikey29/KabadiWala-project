@@ -30,9 +30,9 @@ const ModalCustom = (props) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = {
-      symbol: props.title,
-      buyPrice: stockData,
-      quantity: quantity,
+      stock_name: props.title,
+      buy_price: stockData,
+      quantity: parseInt(quantity),
     };
 
     const response = await api.post("/buyupdate", data);
