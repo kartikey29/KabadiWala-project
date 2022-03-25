@@ -5,7 +5,7 @@ const InvestCurrentBox = (props) => {
   return (
     <div className={classes.box}>
       <h3>{props.title}</h3>
-      <p>2000 rs</p>
+      <p>{props.total}</p>
     </div>
   );
 };

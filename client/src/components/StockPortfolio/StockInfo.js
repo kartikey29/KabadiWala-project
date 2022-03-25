@@ -1,17 +1,22 @@
 import React from "react";
 import classes from "./StockInfo.module.css";
 import { Button } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
-const StockInfo = () => {
+const StockInfo = (props) => {
   return (
     <div className={classes.box}>
       <span className={classes.topofsymbol}>
-        <span className={classes.quantity}>Qty 4 :- </span>
-        <span className={classes.avg}>Avg 220</span>
+        <span className={classes.quantity}>Qty {props.quantity} :- </span>
+        <span className={classes.avg}>Avg {props.buyPrice}</span>
       </span>
-      <h3>Tata</h3>
-      <span className={classes.invested}>Invested : 2000rs</span>
-      <span className={classes.current}>Current : 230rs</span>
+      <h3>{props.symbol}</h3>
+      <span className={classes.invested}>
+        Invested : {props.buyPrice * props.quantity}
+      </span>
+      <span className={classes.current}>
+        Current : {props.buyPrice * props.quantity}
+      </span>
       <form className={classes.form}>
         <input
           type="number"

@@ -10,9 +10,12 @@ import BearBull from "./components/Resources/nseVsBse/BearBull";
 import { useEffect } from "react";
 import api from "./config/api";
 import { useDispatch } from "react-redux";
+import Loading from "./components/UI/Loading";
+import { useState } from "react";
 
 function App() {
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const portfolioData = async () => {
@@ -28,28 +31,38 @@ function App() {
         type: "GOT_BALANCE",
         payload: { data: response.data },
       });
+      setLoading(false);
     };
+
+    portfolioData();
+    balance();
   }, []);
   return (
     <>
-      <Router>
-        <TopSection></TopSection>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <div>
-                <Landing />
-              </div>
-            }
-          />
-          <Route path="/result" element={<SearchList />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/community/*" element={<CommunityPage />} />
-          <Route path="/resources" element={<Resources />} />
-          <Route path="/BearBull" element={<BearBull />} />
-        </Routes>
-      </Router>
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          <Router>
+            <TopSection></TopSection>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <div>
+                    <Landing />
+                  </div>
+                }
+              />
+              <Route path="/result" element={<SearchList />} />
+              <Route path="/portfolio" element={<Portfolio />} />
+              <Route path="/community/*" element={<CommunityPage />} />
+              <Route path="/resources" element={<Resources />} />
+              <Route path="/BearBull" element={<BearBull />} />
+            </Routes>
+          </Router>
+        </>
+      )}
     </>
   );
 }

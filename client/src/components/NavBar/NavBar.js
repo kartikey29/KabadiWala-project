@@ -4,7 +4,10 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faIndianRupeeSign } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 const NavigationBar = () => {
+  const balance = useSelector((state) => state.portfolio.balance);
+
   return (
     <Navbar
       className={classes.colornav}
@@ -28,7 +31,8 @@ const NavigationBar = () => {
           </Nav>
           <Nav>
             <div className={classes.balance}>
-              <FontAwesomeIcon icon={faIndianRupeeSign}></FontAwesomeIcon> 10000
+              <FontAwesomeIcon icon={faIndianRupeeSign}></FontAwesomeIcon>{" "}
+              {balance}
             </div>
             <Nav.Link
               as={Link}
