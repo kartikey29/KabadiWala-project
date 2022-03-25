@@ -62,7 +62,7 @@ const List = (props) => {
         ></ModalCustom>
       )}
       <div className={classes.listContainer}>
-        <h1>{props.type === "topgain" ? "Top Gainer" : "Top Lossers"}</h1>
+        <h1>{props.type === "topgain" ? "Top Gainer" : "Top Losers"}</h1>
         {loading || !data ? (
           <Loading />
         ) : (

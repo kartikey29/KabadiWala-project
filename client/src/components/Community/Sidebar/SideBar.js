@@ -7,7 +7,7 @@ const Sidebar = () => {
     <div className={classes.side}>
       <SideBarMenuEle name={"Home"} path={"/"} />
       <SideBarMenuEle name={"Articles"} path={"/Articles"} />
-      <SideBarMenuEle name={"Stream & Connect"} path={"/Chats"} />
+      <SideBarMenuEle name={"Stream & Connect"} path={"/agora"} />
       <SideBarMenuEle name={"Groups"} path={"/Chats"} />
     </div>
   );

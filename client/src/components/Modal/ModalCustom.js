@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import classes from "./ModalCustom.module.css";
 import Loading from "../UI/Loading";
 import priceData from "../helperFunctions/getPriceData";
+import api from "../../config/api";
+import { useDispatch } from "react-redux";
 
 const ModalCustom = (props) => {
   const [loading, setLoading] = useState(true);
@@ -23,14 +25,26 @@ const ModalCustom = (props) => {
     func();
   }, []);
 
-  const handleSubmit = (event) => {
+  const dispatch = useDispatch();
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = {
       symbol: props.title,
       buyPrice: stockData,
       quantity: quantity,
     };
-    console.log(data);
+
+    const response = await api.post("/buyupdate", data);
+    console.log(response);
+
+    if (response === "valid") {
+      alert("Bought " + props.title + "quantity: " + quantity);
+      dispatch({
+        type: "DEDUCT_BALANCE_DATA",
+        payload: { data: quantity * stockData },
+      });
+    }
     props.handleClose();
   };
 

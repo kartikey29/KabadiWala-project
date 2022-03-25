@@ -5,6 +5,8 @@ import SideBar from "../Community/Sidebar/SideBar";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "../Community/Home/HomePage";
 import Article from "../Community/Articles/Articles";
+// import Agora from "../Agora/Agora";
+import Agora2 from "../Agora/Agora";
 
 const CommunityPage = () => {
   return (
@@ -17,7 +19,7 @@ const CommunityPage = () => {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/Articles" element={<Article />} />
-            <Route path="/Chats" element={<div>Chats</div>} />
+            <Route path="/agora" element={<Agora2 />} />
           </Routes>
         </Col>
       </Row>
